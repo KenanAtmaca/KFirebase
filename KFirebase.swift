@@ -2,8 +2,9 @@
 //  Created by K&
 //  kenanatmaca.com
 //  Copyright © 2016 Kenan Atmaca. All rights reserved.
-//  KFirebase v1.0
 //
+
+//  KFirebase v1.1
 
 import UIKit
 import SystemConfiguration
@@ -57,13 +58,7 @@ open class KFirebase: NSObject {
          let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
             var chlds:FIRDatabaseReference!
             
-            switch (childs.count) {
-            case 1: chlds = referanceDB.child(childs[0])
-            case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-            case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-            case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-            default: fatalError("@Child count maximum 4")
-            }
+            chlds = serverChildAdded(ref: referanceDB, childs: childs)
           
             chlds.setValue(values, withCompletionBlock: { (error, ref) in
                 if error != nil {
@@ -87,13 +82,7 @@ open class KFirebase: NSObject {
         let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
         var chlds:FIRDatabaseReference!
         
-        switch (childs.count) {
-        case 1: chlds = referanceDB.child(childs[0])
-        case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-        case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-        case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-        default: fatalError("@Child count maximum 4")
-        }
+        chlds = serverChildAdded(ref: referanceDB, childs: childs)
         
         chlds.setValue(value, withCompletionBlock: { (error, ref) in
             if error != nil {
@@ -119,13 +108,7 @@ open class KFirebase: NSObject {
            let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
             var chlds:FIRDatabaseReference!
             
-            switch (childs.count) {
-            case 1: chlds = referanceDB.child(childs[0])
-            case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-            case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-            case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-            default: fatalError("@Child count maximum 4")
-            }
+           chlds = serverChildAdded(ref: referanceDB, childs: childs)
             
             chlds.updateChildValues(values, withCompletionBlock: { (error, ref) in
                 if error != nil {
@@ -149,13 +132,7 @@ open class KFirebase: NSObject {
            let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
             var chlds:FIRDatabaseReference!
             
-            switch (childs.count) {
-            case 1: chlds = referanceDB.child(childs[0])
-            case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-            case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-            case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-            default: fatalError("@Child count maximum 4")
-            }
+           chlds = serverChildAdded(ref: referanceDB, childs: childs)
            
             chlds.removeValue(completionBlock: { (error, ref) in
                 
@@ -180,13 +157,7 @@ open class KFirebase: NSObject {
     let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
     var chlds:FIRDatabaseReference!
     
-    switch (childs.count) {
-    case 1: chlds = referanceDB.child(childs[0])
-    case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-    case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-    case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-    default: fatalError("@Child count maximum 4")
-    }
+    chlds = serverChildAdded(ref: referanceDB, childs: childs)
     
     chlds.observe(event, with: { (snapshot) in
         
@@ -210,13 +181,7 @@ open class KFirebase: NSObject {
         let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
         var chlds:FIRDatabaseReference!
         
-        switch (childs.count) {
-        case 1: chlds = referanceDB.child(childs[0])
-        case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-        case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-        case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-        default: fatalError("@Child count maximum 4")
-        }
+        chlds = serverChildAdded(ref: referanceDB, childs: childs)
         
         chlds.observe(event, with: { (snapshot) in
             
@@ -239,13 +204,7 @@ open class KFirebase: NSObject {
         let referanceDB:FIRDatabaseReference! = url != nil ? FIRDatabase.database().reference(fromURL: self.url!) : FIRDatabase.database().reference()
         var chlds:FIRDatabaseReference!
         
-        switch (childs.count) {
-        case 1: chlds = referanceDB.child(childs[0])
-        case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-        case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-        case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-        default: fatalError("@Child count maximum 4")
-        }
+        chlds = serverChildAdded(ref: referanceDB, childs: childs)
         
         chlds.observeSingleEvent(of: event, with: { (snapshot) in
             if let sdata:[String:AnyObject] = snapshot.value as? [String:AnyObject] {
@@ -268,13 +227,7 @@ open class KFirebase: NSObject {
         let referanceDB = storageURL != nil ? FIRStorage.storage().reference(forURL: storageURL!) : FIRStorage.storage().reference()
         var chlds:FIRStorageReference!
         
-        switch (childs.count) {
-        case 1: chlds = referanceDB.child(childs[0])
-        case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-        case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-        case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-        default: fatalError("@Child count maximum 4")
-        }
+        chlds = storageChildAdded(ref: referanceDB, childs: childs)
         
         chlds.put(imageData!, metadata: nil) { (metaData, error) in
             
@@ -301,13 +254,7 @@ open class KFirebase: NSObject {
     let referanceDB = storageURL != nil ? FIRStorage.storage().reference(forURL: storageURL!) : FIRStorage.storage().reference()
     var chlds:FIRStorageReference!
     
-    switch (childs.count) {
-    case 1: chlds = referanceDB.child(childs[0])
-    case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-    case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-    case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-    default: fatalError("@Child count maximum 4")
-    }
+    chlds = storageChildAdded(ref: referanceDB, childs: childs)
     
      chlds.delete { (error) in
         
@@ -332,13 +279,7 @@ open class KFirebase: NSObject {
         let referanceDB = storageURL != nil ? FIRStorage.storage().reference(forURL: storageURL!) : FIRStorage.storage().reference()
         var chlds:FIRStorageReference!
         
-        switch (childs.count) {
-        case 1: chlds = referanceDB.child(childs[0])
-        case 2: chlds = referanceDB.child(childs[0]).child(childs[1])
-        case 3: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2])
-        case 4: chlds = referanceDB.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
-        default: fatalError("@Child count maximum 4")
-        }
+        chlds = storageChildAdded(ref: referanceDB, childs: childs)
         
         chlds.put(data, metadata: nil) { (metaData, error) in
             
@@ -355,6 +296,38 @@ open class KFirebase: NSObject {
         
         
         return KFirebase.self
+    }
+    
+    private static func serverChildAdded(ref:FIRDatabaseReference,childs:[String]) -> FIRDatabaseReference {
+    
+        var finalRef:FIRDatabaseReference!
+        
+        switch (childs.count) {
+        case 1: finalRef = ref.child(childs[0])
+        case 2: finalRef = ref.child(childs[0]).child(childs[1])
+        case 3: finalRef = ref.child(childs[0]).child(childs[1]).child(childs[2])
+        case 4: finalRef = ref.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
+        default: fatalError("@Child count maximum 4")
+        }
+        
+        return finalRef
+        
+    }
+    
+    private static func storageChildAdded(ref:FIRStorageReference,childs:[String]) -> FIRStorageReference {
+        
+        var finalRef:FIRStorageReference!
+        
+        switch (childs.count) {
+        case 1: finalRef = ref.child(childs[0])
+        case 2: finalRef = ref.child(childs[0]).child(childs[1])
+        case 3: finalRef = ref.child(childs[0]).child(childs[1]).child(childs[2])
+        case 4: finalRef = ref.child(childs[0]).child(childs[1]).child(childs[2]).child(childs[3])
+        default: fatalError("@Child count maximum 4")
+        }
+        
+        return finalRef
+        
     }
    
 }//
